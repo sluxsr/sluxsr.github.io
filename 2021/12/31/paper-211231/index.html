@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Title -->
+<title>阅读笔记：Exploring Logic Optimizations with Reinforcement Learning and Graph Convolutional Network - Shengyao</title>
+
+<!-- Icon -->
+<link rel="icon" href="/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" onload="this.onload=null, this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript>
+
+
+
+<!-- Style -->
+
+<link rel="stylesheet" href="/styles/main.css">
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-pure@1.0.1/dist/main.css"> -->
+
+
+
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    <body>
+        <div class="main gt-bg-theme-color-first">
+            <div class="main-content">
+                <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            
+        </div>
+    </div>
+    <button aria-label="Navbar Toggler" class="navbar-toggler" type="button" id="changeNavbar">
+        <i class="gt-c-content-color-first" style="font-size: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="18px" fill="currentColor">
+                <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" />
+            </svg>
+        </i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center; ">
+            
+                <div class="nav-item">
+                    <a href="/top/" class="menu gt-a-link" target="_self">About</a>
+                </div>
+            
+                <div class="nav-item">
+                    <a href="/archives/" class="menu gt-a-link" target="_self">Archives</a>
+                </div>
+            
+                <div class="nav-item">
+                    <a href="/tags/" class="menu gt-a-link" target="_self">Tags</a>
+                </div>
+            
+                <div class="nav-item">
+                    <a href="/contact/" class="menu gt-a-link" target="_self">Contact</a>
+                </div>
+            
+        </div>
+    </div>
+</nav>
+
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = function() {
+        let element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else { 
+            element.style.display = 'none';
+        }
+    }
+</script>
+                <div class="post-container">
+    <div class="post-detail gt-bg-theme-color-second gt-c-content-color-first">
+        <article class="gt-post-content">
+            <h1 class="post-title">阅读笔记：Exploring Logic Optimizations with Reinforcement Learning and Graph Convolutional Network</h1>
+            <div class="post-info">
+                <time class="post-time gt-c-content-color-first">
+                    · 2021-12-31 ·</time>
+                
+                    
+                
+            </div>
+            <hr>
+            <div class="post-content gt-c-content-color-first">
+                <p>今天准备阅读以下这篇文章： Exploring Logic Optimizations with Reinforcement Learning and Graph Convolutional Network<br>
+<img width="700" src="/images/20211231/01.png"><br>
+<strong>摘要</strong>：组合电路的Logic synthesis指的是找到Boolean Logic Functions的最小等效表示。常用做法是用Standardized logic networks来表示Boolean logic，例如反相图 (AIG)，并在图上迭代地执行逻辑最小化操作。尽管已经有很多对不同逻辑表示和运算的研究，但这些运算的顺序往往都是由常识（启发式算法）决定的。我们提出了解决Logic synthesis问题的马尔可夫决策过程 (MDP) ，并且结合图卷积网络和强化学习 (RL) 算法，以探索解决方案搜索空间。实验结果表明，在相同的序列长度和动作空间下，所提出的方法优于众所周知的逻辑综合启发式算法。</p>
+<p>Logic synthesis发生于将 <em>“functional descriptive language”</em> (RTL, register-transfer level language) 翻译为 <em>“logic gate-level descriptions”</em> 的过程中，即，要将hardware logic翻译为诸如NAND, NOR, XOR, INV之类的gates。Logic synthesis的目的是减少映射的devices（gates）的数量、减少latency，提升运行速度。优化通常发生于Logic function level，这个阶段通常由logic graphs来表示。在不改变logic function的情况下，logic graph中一些诸如<em>balance, rewrite, refactor</em>之类的操作，可以被优化为其他操作。优化目标可以是：更少的nodes或者较浅的最大logic graph depth。</p>
+<h3 id="Preliminary"><strong>Preliminary</strong></h3>
+<p><strong>Logic Networks/AIG</strong>： 是combinational logic functions的图表示，每个node代表一个基本逻辑门，nodes之间的连接代表下游logic paths。其中and-inverter graph只由AND和NOT gates组成。</p>
+<p><strong>Logic Synthesis</strong>： 在将硬件语言翻译为gate-level的同时优化area, delay, power。要想scale to large graphs需要算法能够根据图的一些heuristics局部优化子图，然后反复执行这些操作，直到不能继续优化。</p>
+<p><strong>Markov Decision Process</strong>: formulates the dicrete-time stochastic control process. 下一步action的probability distribution只取决于当前state。</p>
+<h3 id="本文算法"><strong>本文算法</strong></h3>
+<p><strong>MDP Formulation</strong>：Logic synthesis本来就是一个序列化的过程。</p>
+<ol>
+<li>State space：首先state就是跟之前的一些工作类似，是用current logic graph来表示。比如，
+<ul>
+<li>现在graph中有多少nodes，多深的depth，</li>
+<li>上一action之前有少nodes和depth，</li>
+<li>上个action是什么，</li>
+<li>前三个action的sum，并做归一化，</li>
+<li>现在在执行第几个action，并normalized by 18（我猜这个18是由作者设定的每个episode可以包含的最多steps的数量）</li>
+<li>AIG graph representation using GNN，细节将在后文展开</li>
+</ul>
+</li>
+<li>Action space：用的就是<em>resyn2</em>的action space，就5种actions。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>动作缩写</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b</td>
+<td>Balance: 平衡当前网络</td>
+</tr>
+<tr>
+<td>rw</td>
+<td>Rewrite: 重写AIG</td>
+</tr>
+<tr>
+<td>rf</td>
+<td>Refactor: refactor AIG</td>
+</tr>
+<tr>
+<td>rwz</td>
+<td>Rewrite with zero-cost replacements</td>
+</tr>
+<tr>
+<td>rfz</td>
+<td>Refactor with zero-cost replacements</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>Rewards: 用nodes和depth的gain（即通过优化减少了多少nodes和depth）减去一个baseline。baseline通过run两次<em>resyn2</em>，并取平均值得到。</li>
+</ol>
+<p><strong>RL算法：</strong></p>
+<p>用的是REINFORCE algorithm，用policy <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="8.004ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 3537.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path></g><g data-mml-node="mo" transform="translate(570,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(959,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mo" transform="translate(1488,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mi" transform="translate(1766,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mo" transform="translate(2235,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(2679.7,0)"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g><g data-mml-node="mo" transform="translate(3148.7,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container>学习每个action的value，从而得到actions的probability distribution，最终选择action。MCTS的随机性令RL agent得以在整个action space中探索。本文使用一个state-value function parameterization <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.669ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2947.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D710" d="M413 384Q413 406 432 424T473 443Q492 443 507 425T523 367Q523 334 508 270T468 153Q424 63 373 27T282 -10H268Q220 -10 186 2T135 36T111 78T104 121Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 299 34 333T82 404T161 441Q200 441 225 419T250 355Q248 336 247 334Q247 331 232 291T201 199T185 118Q185 68 211 47T275 26Q317 26 355 57T416 132T452 216T465 277Q465 301 457 318T439 343T421 361T413 384Z"></path></g><g data-mml-node="mo" transform="translate(540,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(929,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mo" transform="translate(1398,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(1842.7,0)"><path data-c="1D464" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z"></path></g><g data-mml-node="mo" transform="translate(2558.7,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container>来估算state的value，这部分内容在后文有详细讲解。</p>
+<p><strong>GCN (Graph Concolutional Network)：</strong><br>
+本文采用的是传统的GCN，其中作为input的node embedding包含了每个node的logic node type和PI/PO type（即一个有六种可能的one-hot vector，(1)constant one, (2)primary output, (3)primary input, (4)no inverter, (5)one inverter, (6)two inverters），经过几层图卷积层，得到的新node embedding再取全部node的平均，从而得到graph embedding。</p>
+<p><strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.564ex" xmlns="http://www.w3.org/2000/svg" width="9.291ex" height="2.26ex" role="img" focusable="false" viewBox="0 -749.5 4106.7 999"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D745" d="M55 289H43Q23 289 23 303Q23 308 33 322Q116 434 199 443Q200 444 418 444Q591 444 617 444T652 439Q674 426 674 400Q674 378 661 360T625 335Q621 334 549 333H479L477 321Q476 312 476 279Q476 219 491 174T521 104T536 65Q536 38 511 15T457 -8Q403 -8 386 94Q384 110 384 139Q384 181 391 229T406 304L413 331Q413 333 365 333H316L315 329Q315 328 312 314T301 272T288 220Q274 167 258 103Q244 49 240 38T228 18Q225 16 224 14Q200 -8 172 -8Q146 -8 132 7T118 44Q118 54 121 61Q122 65 142 102T190 195T235 293Q250 329 250 333Q177 333 166 332Q115 328 88 301L77 290L55 289Z"></path></g><g data-mml-node="mo" transform="translate(682,0) translate(0 -0.5)"><path data-c="28" d="M103 166T103 251T121 412T165 541T225 639T287 708T341 750H356H361Q382 750 382 736Q382 732 365 714T323 661T274 576T232 439T214 250Q214 -62 381 -229Q382 -231 382 -234Q382 -249 360 -249H356H341Q314 -231 287 -207T226 -138T165 -41T121 89Z"></path></g><g data-mml-node="mi" transform="translate(1129,0)"><path data-c="1D482" d="M222 -8Q140 -8 89 34T38 158Q38 191 48 227Q72 329 151 390T327 452Q361 452 385 443T421 425T433 416H434L441 421Q448 426 460 430T486 435Q509 435 523 422T538 386Q538 380 522 315T488 179T467 93Q466 87 466 72Q466 42 483 42Q505 42 521 75Q531 94 541 134Q546 155 550 158T571 162H576H587Q607 162 607 148Q606 142 604 132T590 94T566 47T528 9T474 -8Q396 -8 358 40Q295 -8 222 -8ZM404 351Q383 401 324 401Q300 401 270 385T221 330Q206 296 186 220Q166 136 166 106Q166 72 184 58T228 43Q256 43 284 57T328 84T343 103Q343 106 374 228L404 351Z"></path></g><g data-mml-node="mo" transform="translate(1762,0) translate(0 -0.5)"><path data-c="7C" d="M160 -249Q138 -249 129 -225V250Q129 725 131 729Q139 750 159 750T190 725V-225Q181 -249 160 -249Z"></path></g><g data-mml-node="mi" transform="translate(2081,0)"><path data-c="1D494" d="M140 290Q140 311 148 336T176 388T235 433T326 451H336Q355 451 373 449T418 439T460 412T476 363Q476 333 456 311T406 289Q384 289 371 302T357 335Q357 351 364 364T379 384L386 391Q386 392 381 394T362 398T330 400Q299 400 278 393T247 373T235 352T232 335Q232 322 242 312Q258 299 315 290T403 260Q457 224 457 167Q457 152 453 134T435 90T397 43T330 7T229 -8Q133 -8 95 22T57 91Q57 127 81 152T139 177Q161 177 177 164T194 121Q189 80 153 56Q179 43 236 43Q275 43 303 52T343 75T361 101T366 124Q366 148 338 161T272 180T232 186Q187 198 164 227T140 290Z"></path></g><g data-mml-node="mo" transform="translate(2612,0)"><path data-c="2C" d="M74 85Q74 120 97 145T159 171Q200 171 226 138Q258 101 258 37Q258 -5 246 -44T218 -109T183 -155T152 -184T135 -194Q129 -194 118 -183T106 -164Q106 -157 115 -149Q121 -145 130 -137T161 -100T195 -35Q197 -28 200 -17T204 3T205 11T199 9T183 3T159 0Q120 0 97 26T74 85Z"></path></g><g data-mml-node="mi" transform="translate(3097.7,0)"><path data-c="1D73D" d="M213 -8Q130 -8 85 50T40 200V207Q40 303 83 428Q122 535 189 608Q279 702 381 702Q410 702 437 693T492 661T537 593T554 486Q554 428 539 362T495 230T425 111T330 25T213 -8ZM433 562Q433 600 419 625T377 651Q363 651 348 644T311 619T268 557T229 453Q225 441 217 411T208 378H401Q433 500 433 562ZM161 140Q161 43 217 43Q249 43 280 74Q310 103 332 150T378 287Q385 313 385 315Q385 316 289 316H192Q191 308 183 275T169 205T161 140Z"></path></g><g data-mml-node="mo" transform="translate(3659.7,0) translate(0 -0.5)"><path data-c="29" d="M231 251Q231 354 214 439T173 575T123 661T81 714T64 735Q64 744 73 749H75Q77 749 79 749T84 750T90 750H105Q132 732 159 708T220 639T281 542T325 413T343 251T325 89T281 -40T221 -138T159 -207T105 -249H90Q80 -249 76 -249T68 -245T64 -234Q64 -230 81 -212T123 -160T172 -75T214 61T231 251Z"></path></g></g></g></svg></mjx-container>和<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.564ex" xmlns="http://www.w3.org/2000/svg" width="7.63ex" height="2.26ex" role="img" focusable="false" viewBox="0 -749.5 3372.7 999"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D74A" d="M189 388Q189 396 187 398T176 401Q144 399 122 369T89 304Q84 288 81 285T61 282H55H44Q24 282 24 296Q24 306 34 330T64 382T116 431T188 452Q232 452 270 430T308 361Q308 345 275 258T241 123Q241 44 336 44H344Q380 44 415 73T474 140T511 214T526 267Q526 280 513 292Q505 301 486 311T456 333T444 367Q444 400 471 426T529 453Q555 453 579 431T604 358Q604 327 592 271T557 172Q550 157 541 142T510 97T464 47T404 9T328 -8Q264 -8 219 5T154 41T125 85T117 131Q117 182 153 277T189 388Z"></path></g><g data-mml-node="mo" transform="translate(631,0) translate(0 -0.5)"><path data-c="28" d="M103 166T103 251T121 412T165 541T225 639T287 708T341 750H356H361Q382 750 382 736Q382 732 365 714T323 661T274 576T232 439T214 250Q214 -62 381 -229Q382 -231 382 -234Q382 -249 360 -249H356H341Q314 -231 287 -207T226 -138T165 -41T121 89Z"></path></g><g data-mml-node="mi" transform="translate(1078,0)"><path data-c="1D494" d="M140 290Q140 311 148 336T176 388T235 433T326 451H336Q355 451 373 449T418 439T460 412T476 363Q476 333 456 311T406 289Q384 289 371 302T357 335Q357 351 364 364T379 384L386 391Q386 392 381 394T362 398T330 400Q299 400 278 393T247 373T235 352T232 335Q232 322 242 312Q258 299 315 290T403 260Q457 224 457 167Q457 152 453 134T435 90T397 43T330 7T229 -8Q133 -8 95 22T57 91Q57 127 81 152T139 177Q161 177 177 164T194 121Q189 80 153 56Q179 43 236 43Q275 43 303 52T343 75T361 101T366 124Q366 148 338 161T272 180T232 186Q187 198 164 227T140 290Z"></path></g><g data-mml-node="mo" transform="translate(1609,0)"><path data-c="2C" d="M74 85Q74 120 97 145T159 171Q200 171 226 138Q258 101 258 37Q258 -5 246 -44T218 -109T183 -155T152 -184T135 -194Q129 -194 118 -183T106 -164Q106 -157 115 -149Q121 -145 130 -137T161 -100T195 -35Q197 -28 200 -17T204 3T205 11T199 9T183 3T159 0Q120 0 97 26T74 85Z"></path></g><g data-mml-node="mi" transform="translate(2094.7,0)"><path data-c="1D498" d="M636 367Q636 400 664 426T719 453Q748 453 772 431T796 357Q796 321 782 256T727 112T633 6Q604 -8 567 -8Q466 -8 415 43Q414 42 410 38T403 31T396 25T388 18T378 11T367 5T355 0T340 -4T324 -7T306 -8Q249 -8 209 5T151 40T125 84T117 129Q117 176 153 274T190 388Q190 408 158 396Q112 376 90 306Q85 288 81 285T61 282H55H44Q24 282 24 296Q24 305 34 328T63 380T114 430T187 452Q240 452 274 427T309 362Q309 346 275 255T240 117Q240 43 317 43Q325 43 333 45T347 50T359 57T369 66T377 75T383 83T388 90L390 95Q390 99 389 110T387 129Q387 139 391 167Q393 177 419 282T448 396Q456 414 475 429T519 444Q546 444 559 428T572 397Q572 384 542 265T511 114Q511 43 579 43Q608 43 633 66T673 122T699 188T714 244L718 267Q718 291 673 315Q636 335 636 367Z"></path></g><g data-mml-node="mo" transform="translate(2925.7,0) translate(0 -0.5)"><path data-c="29" d="M231 251Q231 354 214 439T173 575T123 661T81 714T64 735Q64 744 73 749H75Q77 749 79 749T84 750T90 750H105Q132 732 159 708T220 639T281 542T325 413T343 251T325 89T281 -40T221 -138T159 -207T105 -249H90Q80 -249 76 -249T68 -245T64 -234Q64 -230 81 -212T123 -160T172 -75T214 61T231 251Z"></path></g></g></g></svg></mjx-container>的网络结构：</strong><br>
+<img width="600" src="/images/20211231/02.png"><br>
+网络结构如上图所示。其中<em>vector</em>指的是上文State space中列举的那些features组成的vector，<em>graph</em>指的是要被feed进GCN的那个图结构。在本文中，一张AIG graph在通过4层GCN layer之后成为一个长度为4的vector。这个vector concat到原本state space的那个<em>vector</em>的第二层网络中得到长度32的新vector，再经过几层网络得到<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="8.004ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 3537.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path></g><g data-mml-node="mo" transform="translate(570,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(959,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mo" transform="translate(1488,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mi" transform="translate(1766,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mo" transform="translate(2235,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(2679.7,0)"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g><g data-mml-node="mo" transform="translate(3148.7,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container>。</p>
+<p>而<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.669ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2947.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D710" d="M413 384Q413 406 432 424T473 443Q492 443 507 425T523 367Q523 334 508 270T468 153Q424 63 373 27T282 -10H268Q220 -10 186 2T135 36T111 78T104 121Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 299 34 333T82 404T161 441Q200 441 225 419T250 355Q248 336 247 334Q247 331 232 291T201 199T185 118Q185 68 211 47T275 26Q317 26 355 57T416 132T452 216T465 277Q465 301 457 318T439 343T421 361T413 384Z"></path></g><g data-mml-node="mo" transform="translate(540,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(929,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mo" transform="translate(1398,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(1842.7,0)"><path data-c="1D464" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z"></path></g><g data-mml-node="mo" transform="translate(2558.7,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container>只用到state space那个<em>vector</em>，虽然这样一定程度上降低了准确性，但方差会变小。State space中的<em>vector</em>长度为10。</p>
+<h3 id="实验部分"><strong>实验部分</strong></h3>
+<p>因为模型非常小，所以是在普通PC上用CPU训练的。</p>
+<p>本文用他们的模型run 100次（每次包含200 episodes）和run两次的<em>resyn2</em>在一个叫<em>i10</em>的benchmark上作对比。我们上文已经提到，他们的reward baseline就是通过run两次<em>resyn2</em>得到的，所以黑线就是<em>resyn2</em>，蓝线是本文的模型，可以看到本文的模型对<em>resyn2</em>是有一些提升的。<br>
+<img width="500" src="/images/20211231/03.png"></p>
+<p>接下来，本文又随机从候选集中选了8个相对较大的combinational circuit benchmarks，在本文介绍的模型中对每个benchmark run 10次，得到两组结果<strong>RL-1</strong>和<strong>RL-2</strong>，这两组的区别在于一个基于node数量优化，另一个基于depth优化。Baselines是：run一次<em>resyn2</em> （<strong>resyn2-1</strong>）、run两次<em>resyn2</em> （<strong>resyn2-2</strong>）、至少run五次<em>resyn2</em>直至结果不变（（<strong>resyn2-<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.018ex" xmlns="http://www.w3.org/2000/svg" width="2.602ex" height="1.041ex" role="img" focusable="false" viewBox="0 -452 1150 460"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="221E" d="M65 219Q65 318 132 385T302 452Q473 452 573 331L589 312L596 320Q710 452 857 452Q948 452 1016 386T1084 225Q1084 125 1017 59T848 -8Q679 -8 576 113L560 132L553 124Q439 -8 292 -8Q200 -8 133 58T65 219ZM1033 224Q1033 291 987 340T875 389Q748 389 648 261Q641 253 642 251Q717 163 748 137Q813 81 880 81Q941 81 987 120T1033 224ZM275 56Q315 56 353 70T418 104T466 144T497 178L507 192Q507 193 474 230T441 269Q355 362 267 362Q210 362 163 324T116 221Q116 150 162 103T275 56Z"></path></g></g></g></svg></mjx-container></strong>））。结果如下：<br>
+<img width="900" src="/images/20211231/04.png"><br>
+可以看到，基于node数量优化时<strong>RL-1</strong>的node数量比<strong>resyn2-<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.018ex" xmlns="http://www.w3.org/2000/svg" width="2.602ex" height="1.041ex" role="img" focusable="false" viewBox="0 -452 1150 460"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="221E" d="M65 219Q65 318 132 385T302 452Q473 452 573 331L589 312L596 320Q710 452 857 452Q948 452 1016 386T1084 225Q1084 125 1017 59T848 -8Q679 -8 576 113L560 132L553 124Q439 -8 292 -8Q200 -8 133 58T65 219ZM1033 224Q1033 291 987 340T875 389Q748 389 648 261Q641 253 642 251Q717 163 748 137Q813 81 880 81Q941 81 987 120T1033 224ZM275 56Q315 56 353 70T418 104T466 144T497 178L507 192Q507 193 474 230T441 269Q355 362 267 362Q210 362 163 324T116 221Q116 150 162 103T275 56Z"></path></g></g></g></svg></mjx-container></strong> 少，基于depth优化时<strong>RL-2</strong>的logic depth比<strong>resyn2-<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.018ex" xmlns="http://www.w3.org/2000/svg" width="2.602ex" height="1.041ex" role="img" focusable="false" viewBox="0 -452 1150 460"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="221E" d="M65 219Q65 318 132 385T302 452Q473 452 573 331L589 312L596 320Q710 452 857 452Q948 452 1016 386T1084 225Q1084 125 1017 59T848 -8Q679 -8 576 113L560 132L553 124Q439 -8 292 -8Q200 -8 133 58T65 219ZM1033 224Q1033 291 987 340T875 389Q748 389 648 261Q641 253 642 251Q717 163 748 137Q813 81 880 81Q941 81 987 120T1033 224ZM275 56Q315 56 353 70T418 104T466 144T497 178L507 192Q507 193 474 230T441 269Q355 362 267 362Q210 362 163 324T116 221Q116 150 162 103T275 56Z"></path></g></g></g></svg></mjx-container></strong> 少。</p>
+
+            </div>
+        </article>
+    </div>
+    <br>
+    
+        <div class="next-prev-post">
+            
+                <div class="prev-post">
+                    <div class="prev gt-c-content-color-first">
+                        上一篇：<a href="/2022/01/06/paper-220107/" 
+                            class="post-title gt-a-link">阅读笔记：Subgraph Neural Network</a>
+                    </div>
+                </div>
+            
+            
+                <div class="next-post">
+                    <div class="next gt-c-content-color-first">
+                        下一篇：<a href="/2021/09/24/qc-2021-3/" 
+                            class="post-title gt-a-link">量子计算（三）</a>
+                    </div>
+                </div>
+            
+        </div>
+    
+    
+
+    
+
+</div>
+
+                <div class="site-footer gt-c-content-color-first">
+    <div class="footer-main">
+        <!-- 建议保留版权信息或者添加主题信息到友链，感谢您的理解 -->
+        <!-- 文件位置：layout/_includes/footer.ejs -->
+        <span style="text-align: right; float: right;">Theme <a 
+            href="https://github.com/renbaoshuo/hexo-theme-pure" target="_blank">Pure</a> | Powered by <a 
+            href="https://hexo.io" target="_blank">Hexo</a></span>
+        <span style="text-align: left;">Copyright © 2021 Shengyao's Blog
+</span>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </body>
+</html>
