@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Title -->
+<title>阅读笔记：Exploring Logic Optimizations with Reinforcement Learning and Graph Convolutional Network - Shengyao</title>
+
+<!-- Icon -->
+<link rel="icon" href="/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" onload="this.onload=null, this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript>
+
+
+
+<!-- Style -->
+
+<link rel="stylesheet" href="/styles/main.css">
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-pure@1.0.1/dist/main.css"> -->
+
+
+
+    <meta name="generator" content="Hexo 6.0.0"></head>
+    <body>
+        <div class="main gt-bg-theme-color-first">
+            <div class="main-content">
+                <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            
+        </div>
+    </div>
+    <button aria-label="Navbar Toggler" class="navbar-toggler" type="button" id="changeNavbar">
+        <i class="gt-c-content-color-first" style="font-size: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="18px" fill="currentColor">
+                <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" />
+            </svg>
+        </i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center; ">
+            
+                <div class="nav-item">
+                    <a href="/" class="menu gt-a-link" target="_self">首页</a>
+                </div>
+            
+                <div class="nav-item">
+                    <a href="/archives/" class="menu gt-a-link" target="_self">归档</a>
+                </div>
+            
+                <div class="nav-item">
+                    <a href="/tags/" class="menu gt-a-link" target="_self">标签</a>
+                </div>
+            
+                <div class="nav-item">
+                    <a href="/about/" class="menu gt-a-link" target="_self">About</a>
+                </div>
+            
+        </div>
+    </div>
+</nav>
+
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = function() {
+        let element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else { 
+            element.style.display = 'none';
+        }
+    }
+</script>
+                <div class="post-container">
+    <div class="post-detail gt-bg-theme-color-second gt-c-content-color-first">
+        <article class="gt-post-content">
+            <h1 class="post-title">阅读笔记：Exploring Logic Optimizations with Reinforcement Learning and Graph Convolutional Network</h1>
+            <div class="post-info">
+                <time class="post-time gt-c-content-color-first">
+                    · 2021-12-31 ·</time>
+                
+                    
+                
+            </div>
+            <hr>
+            <div class="post-content gt-c-content-color-first">
+                <p>今天准备阅读以下这篇文章： Exploring Logic Optimizations with Reinforcement Learning and Graph Convolutional Network<br><img width="700" src="/images/20211231/01.png"><br><strong>摘要</strong>：组合电路的Logic synthesis指的是找到Boolean Logic Functions的最小等效表示。常用做法是用Standardized logic networks来表示Boolean logic，例如反相图 (AIG)，并在图上迭代地执行逻辑最小化操作。尽管已经有很多对不同逻辑表示和运算的研究，但这些运算的顺序往往都是由常识（启发式算法）决定的。我们提出了解决Logic synthesis问题的马尔可夫决策过程 (MDP) ，并且结合图卷积网络和强化学习 (RL) 算法，以探索解决方案搜索空间。实验结果表明，在相同的序列长度和动作空间下，所提出的方法优于众所周知的逻辑综合启发式算法。</p>
+<p>Logic synthesis发生于将 <em>“functional descriptive language”</em> (RTL, register-transfer level language) 翻译为 <em>“logic gate-level descriptions”</em> 的过程中，即，要将hardware logic翻译为诸如NAND, NOR, XOR, INV之类的gates。Logic synthesis的目的是减少映射的devices（gates）的数量、减少latency，提升运行速度。优化通常发生于Logic function level，这个阶段通常由logic graphs来表示。在不改变logic function的情况下，logic graph中一些诸如<em>balance, rewrite, refactor</em>之类的操作，可以被优化为其他操作。优化目标可以是：更少的nodes或者较浅的最大logic graph depth。</p>
+<h3 id="Preliminary"><a href="#Preliminary" class="headerlink" title="Preliminary"></a><strong>Preliminary</strong></h3><p><strong>Logic Networks/AIG</strong>： 是combinational logic functions的图表示，每个node代表一个基本逻辑门，nodes之间的连接代表下游logic paths。其中and-inverter graph只由AND和NOT gates组成。</p>
+<p><strong>Logic Synthesis</strong>： 在将硬件语言翻译为gate-level的同时优化area, delay, power。要想scale to large graphs需要算法能够根据图的一些heuristics局部优化子图，然后反复执行这些操作，直到不能继续优化。</p>
+<p><strong>Markov Decision Process</strong>: formulates the dicrete-time stochastic control process. 下一步action的probability distribution只取决于当前state。</p>
+<h3 id="本文算法"><a href="#本文算法" class="headerlink" title="本文算法"></a><strong>本文算法</strong></h3><p><strong>MDP Formulation</strong>：Logic synthesis本来就是一个序列化的过程。</p>
+<ol>
+<li>State space：首先state就是跟之前的一些工作类似，是用current logic graph来表示。比如，<ul>
+<li>现在graph中有多少nodes，多深的depth，</li>
+<li>上一action之前有少nodes和depth，</li>
+<li>上个action是什么，</li>
+<li>前三个action的sum，并做归一化，</li>
+<li>现在在执行第几个action，并normalized by 18（我猜这个18是由作者设定的每个episode可以包含的最多steps的数量）</li>
+<li>AIG graph representation using GNN，细节将在后文展开</li>
+</ul>
+</li>
+<li>Action space：用的就是<em>resyn2</em>的action space，就5种actions。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>动作缩写</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>b</td>
+<td>Balance: 平衡当前网络</td>
+</tr>
+<tr>
+<td>rw</td>
+<td>Rewrite: 重写AIG</td>
+</tr>
+<tr>
+<td>rf</td>
+<td>Refactor: refactor AIG</td>
+</tr>
+<tr>
+<td>rwz</td>
+<td>Rewrite with zero-cost replacements</td>
+</tr>
+<tr>
+<td>rfz</td>
+<td>Refactor with zero-cost replacements</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>Rewards: 用nodes和depth的gain（即通过优化减少了多少nodes和depth）减去一个baseline。baseline通过run两次<em>resyn2</em>，并取平均值得到。</li>
+</ol>
+<p><strong>RL算法：</strong></p>
+<p>用的是REINFORCE algorithm，用policy $\pi(a|s,\theta)$学习每个action的value，从而得到actions的probability distribution，最终选择action。MCTS的随机性令RL agent得以在整个action space中探索。本文使用一个state-value function parameterization $\upsilon(s,w)$来估算state的value，这部分内容在后文有详细讲解。</p>
+<p><strong>GCN (Graph Concolutional Network)：</strong><br>本文采用的是传统的GCN，其中作为input的node embedding包含了每个node的logic node type和PI/PO type（即一个有六种可能的one-hot vector，(1)constant one, (2)primary output, (3)primary input, (4)no inverter, (5)one inverter, (6)two inverters），经过几层图卷积层，得到的新node embedding再取全部node的平均，从而得到graph embedding。</p>
+<p><strong>$\boldsymbol{\pi(a|s,\theta)}$和$\boldsymbol{\upsilon(s,w)}$的网络结构：</strong><br><img width="600" src="/images/20211231/02.png"><br>网络结构如上图所示。其中<em>vector</em>指的是上文State space中列举的那些features组成的vector，<em>graph</em>指的是要被feed进GCN的那个图结构。在本文中，一张AIG graph在通过4层GCN layer之后成为一个长度为4的vector。这个vector concat到原本state space的那个<em>vector</em>的第二层网络中得到长度32的新vector，再经过几层网络得到$\pi(a|s,\theta)$。</p>
+<p>而$\upsilon(s,w)$只用到state space那个<em>vector</em>，虽然这样一定程度上降低了准确性，但方差会变小。State space中的<em>vector</em>长度为10。</p>
+<h3 id="实验部分"><a href="#实验部分" class="headerlink" title="实验部分"></a><strong>实验部分</strong></h3><p>因为模型非常小，所以是在普通PC上用CPU训练的。</p>
+<p>本文用他们的模型run 100次（每次包含200 episodes）和run两次的<em>resyn2</em>在一个叫<em>i10</em>的benchmark上作对比。我们上文已经提到，他们的reward baseline就是通过run两次<em>resyn2</em>得到的，所以黑线就是<em>resyn2</em>，蓝线是本文的模型，可以看到本文的模型对<em>resyn2</em>是有一些提升的。<br><img width="500" src="/images/20211231/03.png"> </p>
+<p>接下来，本文又随机从候选集中选了8个相对较大的combinational circuit benchmarks，在本文介绍的模型中对每个benchmark run 10次，得到两组结果<strong>RL-1</strong>和<strong>RL-2</strong>，这两组的区别在于一个基于node数量优化，另一个基于depth优化。Baselines是：run一次<em>resyn2</em> （<strong>resyn2-1</strong>）、run两次<em>resyn2</em> （<strong>resyn2-2</strong>）、至少run五次<em>resyn2</em>直至结果不变（（<strong>resyn2-$\boldsymbol{\infty}$<strong>））。结果如下：<br><img width="900" src="/images/20211231/04.png"><br>可以看到，基于node数量优化时</strong>RL-1</strong>的node数量比<strong>resyn2-$\boldsymbol{\infty}$</strong> 少，基于depth优化时<strong>RL-2</strong>的logic depth比<strong>resyn2-$\boldsymbol{\infty}$</strong> 少。</p>
+
+            </div>
+        </article>
+    </div>
+    <br>
+    
+        <div class="next-prev-post">
+            
+                <div class="prev-post">
+                    <div class="prev gt-c-content-color-first">
+                        上一篇：<a href="/2022/01/12/ESD-survey-2022-1/" 
+                            class="post-title gt-a-link">ESD Survey（一）</a>
+                    </div>
+                </div>
+            
+            
+                <div class="next-post">
+                    <div class="next gt-c-content-color-first">
+                        下一篇：<a href="/2021/09/24/qc-2021-3/" 
+                            class="post-title gt-a-link">量子计算（三）</a>
+                    </div>
+                </div>
+            
+        </div>
+    
+    
+
+    
+
+</div>
+
+                <div class="site-footer gt-c-content-color-first">
+    <div class="footer-main">
+        <!-- 建议保留版权信息或者添加主题信息到友链，感谢您的理解 -->
+        <!-- 文件位置：layout/_includes/footer.ejs -->
+        <span style="text-align: right; float: right;">Theme <a 
+            href="https://github.com/renbaoshuo/hexo-theme-pure" target="_blank">Pure</a> | Powered by <a 
+            href="https://hexo.io" target="_blank">Hexo</a></span>
+        <span style="text-align: left;">Copyright © 2021 Shengyao's Blog
+</span>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </body>
+</html>

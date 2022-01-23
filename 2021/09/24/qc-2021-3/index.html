@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Title -->
+<title>量子计算（三） - Shengyao</title>
+
+<!-- Icon -->
+<link rel="icon" href="/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" onload="this.onload=null, this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript>
+
+
+
+<!-- Style -->
+
+<link rel="stylesheet" href="/styles/main.css">
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-pure@1.0.1/dist/main.css"> -->
+
+
+
+    <meta name="generator" content="Hexo 6.0.0"></head>
+    <body>
+        <div class="main gt-bg-theme-color-first">
+            <div class="main-content">
+                <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            
+        </div>
+    </div>
+    <button aria-label="Navbar Toggler" class="navbar-toggler" type="button" id="changeNavbar">
+        <i class="gt-c-content-color-first" style="font-size: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="18px" fill="currentColor">
+                <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" />
+            </svg>
+        </i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center; ">
+            
+                <div class="nav-item">
+                    <a href="/" class="menu gt-a-link" target="_self">首页</a>
+                </div>
+            
+                <div class="nav-item">
+                    <a href="/archives/" class="menu gt-a-link" target="_self">归档</a>
+                </div>
+            
+                <div class="nav-item">
+                    <a href="/tags/" class="menu gt-a-link" target="_self">标签</a>
+                </div>
+            
+                <div class="nav-item">
+                    <a href="/about/" class="menu gt-a-link" target="_self">About</a>
+                </div>
+            
+        </div>
+    </div>
+</nav>
+
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = function() {
+        let element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else { 
+            element.style.display = 'none';
+        }
+    }
+</script>
+                <div class="post-container">
+    <div class="post-detail gt-bg-theme-color-second gt-c-content-color-first">
+        <article class="gt-post-content">
+            <h1 class="post-title">量子计算（三）</h1>
+            <div class="post-info">
+                <time class="post-time gt-c-content-color-first">
+                    · 2021-09-24 ·</time>
+                
+                    
+                        <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-tag">
+                            #量子计算</a>
+                    
+                
+            </div>
+            <hr>
+            <div class="post-content gt-c-content-color-first">
+                <h3 id="1-从可逆电路到量子计算"><a href="#1-从可逆电路到量子计算" class="headerlink" title="1. 从可逆电路到量子计算"></a>1. 从可逆电路到量子计算</h3><ul>
+<li>不可逆门的坏处：很多经典逻辑门，比如与非门，在本质上不是不可逆的。对于不可逆门，输入状态在运算后会消失，这导致输出信息少于输入信息，根据熵原理，信息的损失以热的形式耗散到环境中，而对于可逆门，原则上在计算过程中不会产生热量。</li>
+<li>可逆计算：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=rVmZTGeIwnc">Reversible Computing</a>，即知道outputs我们可反向得到唯一inputs。<img width="700" src="/images/20210924/06.png"> </li>
+<li>Toffoli reversible gate：（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Toffoli%20%E9%97%A8/2095934">百科</a>，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%89%98%E4%BD%9B%E5%88%A9%E9%96%98">wiki</a>）又被称作 “控-控-非”门，”controlled-controlled-not （CCNOT）” gate。它具有三路输入和三路输出。如果前两位置一，它将倒置第三位，否则所有位保持不变。通过Toffoli门，任何经典逻辑线路都可以用等价的，仅含可逆元件的线路来代替。<ul>
+<li>举个例子，如果我们想要实现一个 a AND b 的gate，传统AND如左图。现在在右图中加了个input c，右边加了两个output a,b，并把output ab改为f，其中$\mbox{f}=ab\oplus c$，那么我们根据$ab=\mbox{f}\oplus c$就能得到 a AND b，且这个gate可逆。<img width="800" src="/images/20210924/09.jpeg"> </li>
+</ul>
+</li>
+<li>量子电路天然就是可逆的，因为所有的Quantum gates都是Unitary Gates(下面有解释)。值得注意的是如果要在量子电路中加入一个不可逆运算，那就得先像上面那个例子一样把它变成可逆的，然后才能进行下一步操作。</li>
+</ul>
+<h3 id="2-量子设备"><a href="#2-量子设备" class="headerlink" title="2. 量子设备"></a>2. 量子设备</h3><ul>
+<li>Quantum register: 存放n个qubits，表示$2^n$个states的叠加态。</li>
+<li>在这个课中主要介绍的量子计算机:<ul>
+<li>Quantum Gate Computer(IBM Q)</li>
+<li>Quantum Annealer Computer(D-Wave)</li>
+</ul>
+</li>
+<li>波函数随时间的变化，遵循薛定谔方程，薛定谔方程之后会具体讲，总之是下面这个方程。<br>$$<br>i\overline{\mathbf{h}}\frac{d}{dt}\left| \Psi (t) \right&gt; = \widehat{H}\left| \Psi (t) \right&gt;<br>$$<br>其中如果令Hamiltonian(<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%93%88%E5%AF%86%E9%A1%BF%E7%AE%97%E7%AC%A6">哈密顿算符</a>) $\widehat{H}$为constant，可求解得到<br>$$<br>\left| \Psi (t) \right&gt;=e^{-i\widehat{H}t/\overline{\mathbf{h}}}\left| \Psi (0) \right&gt; = \widehat{U}\left| \Psi (0) \right&gt;<br>$$<br>其中Time-evolution operator $\widehat{U}(t)=e^{-i\widehat{H}t/\overline{\mathbf{h}}}$，是一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B9%BA%E6%AD%A3%E7%AE%97%E7%AC%A6/15831740">幺正算符</a>(Unitary operation)，是在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E7%A9%BA%E9%97%B4/5630049">希尔伯特空间</a>上保留内积的算符。即对于一个matrix $U$，可以找到一个inverse的 $U^{\dagger}$实现输入输出之间的可逆计算。其中，$U^{\dagger}$是$U$的共轭转置。如果<br>$U=\begin{bmatrix}<br>a &amp; c \\<br>b &amp; d \\<br>\end{bmatrix}$, $U^{\dagger}=\begin{bmatrix}<br>a\ &amp; \overline{b} \\<br>\overline{c} &amp; d \\<br>\end{bmatrix}$</li>
+<li>Qubits的基本操作：<ul>
+<li>初始化为 $\left| 0 \right&gt;$, $\left| 1 \right&gt;$</li>
+<li>apply U to the Qubit $(U^{\dagger} U=I)$，下面这些都是一些U的例子：<img width="600" src="/images/20210924/07.png"></li>
+</ul>
+</li>
+<li>例：NOT Gate（Pauli X Gate）<img width="600" src="/images/20210924/08.jpeg"></li>
+<li>例：Hadamard H-Gate，这个gate是用来创造叠加态的。<br>$$<br>\alpha \left| 0 \right&gt; + \beta \left| 1 \right&gt; \overset{H}{\rightarrow} \frac{1}{\sqrt{2}}((\alpha+\beta)\left|0\right&gt;+(\alpha-\beta)\left|1\right&gt;)<br>$$</li>
+</ul>
+<h3 id="3-一些线性代数知识"><a href="#3-一些线性代数知识" class="headerlink" title="3. 一些线性代数知识"></a>3. 一些线性代数知识</h3><ul>
+<li>复数函数的内积（inner product）:$\left&lt; \varphi| \psi\right&gt;= \int_{-\infty}^{\infty} \overline{\varphi(x)}\psi(x)\,dx$， 上面的横线指的是complex conjugate。</li>
+<li>column vectors的内积：$\left&lt; \mathbf{\varphi}| \mathbf{\psi}\right&gt;=\mathbf{\varphi^\dagger}\mathbf{\psi} = \mathbf{\overline{\varphi}^T}\mathbf{\psi}$<ul>
+<li>bra-vector: $\left&lt;\cdot \right|$</li>
+<li>ket-vector: $\left|\cdot \right&gt;$</li>
+<li>bracket: $\left&lt; \cdot|\cdot \right&gt;$</li>
+</ul>
+</li>
+<li>内积的物理意义：假设一个粒子的initial state是$\left| \psi\right&gt;$，则在state$\left| \varphi\right&gt;$中找到该粒子的可能性为：$|\left&lt; \mathbf{\varphi}| \mathbf{\psi}\right&gt;|^2$<ul>
+<li>Normalized: $|\left&lt;0|0\right&gt;|^2=1$, $|\left&lt;1|1\right&gt;|^2=1$</li>
+<li>orthogonal: $|\left&lt;0|1\right&gt;|^2=0$, $|\left&lt;1|0\right&gt;|^2=0$</li>
+</ul>
+</li>
+<li>Tensor product: $\left|\psi\right&gt;\otimes\left|\varphi\right&gt;$, $\left|\psi\right&gt;\left|\varphi\right&gt;$, $\left|\psi,\varphi\right&gt;$, $\left|\psi\varphi\right&gt;$ 都是要求tensor product的意思。<br>$$<br>\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}<br>u_1 \\ u_2<br>\end{bmatrix}<br>\otimes \begin{bmatrix}<br>v_1 \\ v_2<br>\end{bmatrix} = \begin{bmatrix}<br>u_1\begin{bmatrix}<br>v_1 \\v_2<br>\end{bmatrix} \\ u_2 \begin{bmatrix}<br>v_1 \\ v_2<br>\end{bmatrix}<br>\end{bmatrix} = \begin{bmatrix}<br>u_1v_1\\ u_1v_2<br>\\ u_2v_1<br>\\ u_2v_2<br>\end{bmatrix}<br>$$<ul>
+<li>Tensor product不遵循交换律，先后顺序很重要。</li>
+<li>性质：<ul>
+<li>分配律：$(\mathbf{v}+\mathbf{w})\otimes \mathbf{u} = \mathbf{v}\otimes\mathbf{u}+\mathbf{w}\otimes\mathbf{u}$</li>
+<li>constant coefficient：$c(\mathbf{v}\otimes\mathbf{u})=(c\mathbf{v})\otimes\mathbf{u}=\mathbf{v}\otimes(c\mathbf{u})$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内积与张量积：<br>$$<br>\left&lt;\varphi _1 \varphi _2|\psi _1 \psi _2\right&gt; = \left&lt;\varphi _1|\psi _1\right&gt;_1\left&lt;\varphi _2|\psi _2\right&gt;_2<br>$$<br>  例：$\left&lt;011|010\right&gt; = \left&lt;0|0\right&gt;\left&lt;1|1\right&gt;\left&lt;1|0\right&gt;=1\cdot1\cdot0=0$<ul>
+<li>只要qubit不一样，就是orthogonal的，内积就是0，否则就是1.</li>
+</ul>
+</li>
+<li>例题：两个电子($\left|\psi _1\right&gt;$, $\left|\psi _2\right&gt;$), 其中$\left|\psi _1\right&gt;=\sqrt{\frac{3}{5}}\left|0\right&gt; +\sqrt{\frac{2}{5}}\left|1\right&gt;, \left|\psi _2\right&gt;=\sqrt{\frac{1}{2}}\left|0\right&gt; +\sqrt{\frac{1}{2}}\left|1\right&gt;$，求在state $\left|0\right&gt;$测量到电子$\left|\psi _1\right&gt;$且在state $\left|1\right&gt;$测量到电子$\left|\psi _2\right&gt;$的概率。<br>  解：其实就是求$\left|\psi _1\psi _2\right&gt;$在$\left|01\right&gt;$的概率<br>  $$<br>  \left|\psi _1\psi _2\right&gt; = \left(\sqrt{\frac{3}{5}}\left|0\right&gt; +\sqrt{\frac{2}{5}}\left|1\right&gt;\right) \left(\sqrt{\frac{1}{2}}\left|0\right&gt; +\sqrt{\frac{1}{2}}\left|1\right&gt;\right) = \sqrt{\frac{3}{10}}\left|00 \right&gt;+\sqrt{\frac{3}{10}}\left|01 \right&gt;+\sqrt{\frac{2}{10}}\left|10 \right&gt;+\sqrt{\frac{2}{10}}\left|11 \right&gt;<br>  $$<br>  $$<br>  \left|\left&lt;01|\psi _1\psi _2\right&gt;\right|^2 = \left|\sqrt{\frac{3}{10}}\right|^2=0.3<br>  $$</li>
+<li>Outer product（外积）：$\left|\psi\right&gt;\left&lt;\varphi\right|=\left|\psi\right&gt;\otimes\left&lt;\varphi\right|$，用来制造operator<ul>
+<li>例：Let $\left|\psi\right&gt;=\sqrt{\frac{1}{2}}\left|0\right&gt; +\sqrt{\frac{1}{2}}\left|1\right&gt;$， define$\widehat{P}_0 \equiv \left|0\right&gt;\left&lt;0\right|$ be a projection operator.<br>$$<br>\widehat{P}_0\left|\psi\right&gt;=\sqrt{\frac{1}{2}}\left|0\right&gt;\left&lt;0|0\right&gt;+\sqrt{\frac{1}{2}}\left|0\right&gt;\left&lt;0|1\right&gt;=\sqrt{\frac{1}{2}}\left|0\right&gt;<br>$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-Deutsch-Algorithm"><a href="#4-Deutsch-Algorithm" class="headerlink" title="4. Deutsch Algorithm:"></a>4. Deutsch Algorithm:</h3><ul>
+<li>问题定义：现有一个boolean function $f:\{ 0,1 \} \rightarrow \{0,1\}$, 目标是判断$f$是constant还是balanced，这两种函数有如下区别<ul>
+<li>constant: $f(x)=0 \mbox{ or } f(x)=1$</li>
+<li>balanced: $f(x)=x \mbox{ or } f(x)=-x$<br>传统的判断办法就是分别输入0,1，看两次结果是否相等，相等就是constant, 不等就是balanced。但这样就需要两次函数的求值运算，而量子算法只需要一次。</li>
+</ul>
+</li>
+<li>现在我们想用量子算法解决，但是可以看到，如果$f$是constant那它就是不可逆的，无法构造量子电路，所以要用类似上面提到过的Toffoli gate的方法，加一个input和一个output。构造好的新的gate $U_f$的input和output可以表示为<br>$$<br>U_f:\left|x\right&gt;\left|y\right&gt;\mapsto\left|x\right&gt;\left|y\oplus f(x)\right&gt;<br>$$<br>实际的gate呢，长这样子，其中3号H gate后面那个像D一样的gate是测量的gate, 如果测量得到$\left|0\right&gt;$那就是constant function，如果的测量得到$\left|1\right&gt;$，那就是balanced funtion。<img width="600" src="/images/20210924/10.png"></li>
+</ul>
+<h3 id="5-Simon’s-Algorithm"><a href="#5-Simon’s-Algorithm" class="headerlink" title="5. Simon’s Algorithm"></a>5. Simon’s Algorithm</h3><p>(未完，待编辑)</p>
+
+            </div>
+        </article>
+    </div>
+    <br>
+    
+        <div class="next-prev-post">
+            
+                <div class="prev-post">
+                    <div class="prev gt-c-content-color-first">
+                        上一篇：<a href="/2021/12/31/paper-211231/" 
+                            class="post-title gt-a-link">阅读笔记：Exploring Logic Optimizations with Reinforcement Learning and Graph Convolutional Network</a>
+                    </div>
+                </div>
+            
+            
+                <div class="next-post">
+                    <div class="next gt-c-content-color-first">
+                        下一篇：<a href="/2021/09/24/qc-2021-2/" 
+                            class="post-title gt-a-link">量子计算（二）</a>
+                    </div>
+                </div>
+            
+        </div>
+    
+    
+
+    
+
+</div>
+
+                <div class="site-footer gt-c-content-color-first">
+    <div class="footer-main">
+        <!-- 建议保留版权信息或者添加主题信息到友链，感谢您的理解 -->
+        <!-- 文件位置：layout/_includes/footer.ejs -->
+        <span style="text-align: right; float: right;">Theme <a 
+            href="https://github.com/renbaoshuo/hexo-theme-pure" target="_blank">Pure</a> | Powered by <a 
+            href="https://hexo.io" target="_blank">Hexo</a></span>
+        <span style="text-align: left;">Copyright © 2021 Shengyao's Blog
+</span>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </body>
+</html>
