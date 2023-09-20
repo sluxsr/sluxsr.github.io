@@ -3,7 +3,7 @@ layout: default
 ---
 
 ### Publications
-<img align="left" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/r5_overview.png" width="200">
+<img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/r5_overview.png?raw=true" width="350">
 
 **R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning**, Shengyao Lu*, Bang Liu*, Keith G. Mills, Shangling Jui, Di Niu 
 
