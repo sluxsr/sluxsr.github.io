@@ -5,7 +5,7 @@ layout: default
 ### Publications
 <img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/r5_overview.png?raw=true">
 
-**R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning**, Shengyao Lu*, Bang Liu*, Keith G. Mills, Shangling Jui, Di Niu 
+**R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning**, Shengyao Lu\*, Bang Liu\*, Keith G. Mills, Shangling Jui, Di Niu 
 
 [ICLR 2022 (Spotlight)](https://openreview.net/forum?id=2eXhNpHeW6E) [[Paper](https://arxiv.org/abs/2205.06454)] [[Code]](https://github.com/sluxsr/r5_graph_reasoning) 
 
