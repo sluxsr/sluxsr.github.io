@@ -4,7 +4,7 @@ layout: default
 
 ## New Preprints
 
-**STExplainer: Global Explainability of GNNs via Frequent SubTree Mining**
+**STExplainer: Global Explainability of GNNs via Frequent SubTree Mining**, Shengyao Lu, Yakun Yu, Baochun Li, Di Niu
 
 [Under review]()
 
@@ -25,6 +25,8 @@ This paper introduces Graph Output Attribution (GOAt), a novel method to attribu
 [Under review]()
 
 In this paper, we study the nature of convincing and human-intelligible explanations for GNNs, and propose an efficient method that produces subgraph-level explanations via edge importance approximation without additional explainer training, achieving counterfactual property and completeness objective at the same time. Extensive experiments on various public datasets demonstrate that our approach substantially outperforms a wide variety of existing methods in explanation fidelity, efficiency and stability.
+
+\
 
 ## Publications
 <img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/r5_overview.png?raw=true">
