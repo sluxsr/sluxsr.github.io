@@ -2,7 +2,7 @@
 layout: default
 ---
 
-### New Preprints
+## New Preprints
 
 **STExplainer: Global Explainability of GNNs via Frequent SubTree Mining**
 
@@ -26,7 +26,7 @@ This paper introduces Graph Output Attribution (GOAt), a novel method to attribu
 
 In this paper, we study the nature of convincing and human-intelligible explanations for GNNs, and propose an efficient method that produces subgraph-level explanations via edge importance approximation without additional explainer training, achieving counterfactual property and completeness objective at the same time. Extensive experiments on various public datasets demonstrate that our approach substantially outperforms a wide variety of existing methods in explanation fidelity, efficiency and stability.
 
-### Publications
+## Publications
 <img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/r5_overview.png?raw=true">
 
 **R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning**, Shengyao Lu\*, Bang Liu\*, Keith G. Mills, Shangling Jui, Di Niu 
