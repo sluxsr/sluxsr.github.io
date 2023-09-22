@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Home - Shengyao Lu
 ---
 
 ## New Preprints
