@@ -13,14 +13,6 @@ In this paper, we follow the intrinsic message-passing mechanism of typical GNNs
 
 - - - 
 
-**GOAt: Explaining Graph Neural Networks via Graph Output Attribution**, Shengyao Lu, Keith G. Mills, Jiao He, Bang Liu, Di Niu
-
-[Under review]()
-
-This paper introduces Graph Output Attribution (GOAt), a novel method to attribute graph outputs to input graph features, creating GNN explanations that are faithful, discriminative, as well as stable across similar samples. By expanding the GNN as a sum of scalar products involving node features, edge features and activation patterns, we propose an efficient analytical method to compute contribution of each node or edge feature to each scalar product and aggregate the contributions from all scalar products in the expansion form to derive the importance of each node and edge. 
-
-- - - 
-
 **LEGrad: An Efficient Gradient Approach to Graph Neural Network Explanation**, Shengyao Lu, Bang Liu, Keith G Mills, Jiao He, Di Niu
 
 [Under review]()
@@ -30,6 +22,15 @@ In this paper, we study the nature of convincing and human-intelligible explanat
 <br> 
 
 ## Publications
+
+**GOAt: Explaining Graph Neural Networks via Graph Output Attribution**, Shengyao Lu, Keith G. Mills, Jiao He, Bang Liu, Di Niu
+
+[ICLR 2024](https://openreview.net/forum?id=2Q8TZWAHv4) [[Code (Available soon)]()]
+
+This paper introduces Graph Output Attribution (GOAt), a novel method to attribute graph outputs to input graph features, creating GNN explanations that are faithful, discriminative, as well as stable across similar samples. By expanding the GNN as a sum of scalar products involving node features, edge features and activation patterns, we propose an efficient analytical method to compute contribution of each node or edge feature to each scalar product and aggregate the contributions from all scalar products in the expansion form to derive the importance of each node and edge. 
+
+- - - 
+
 <img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/r5_overview.png?raw=true">
 
 **R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning**, Shengyao Lu\*, Bang Liu\*, Keith G. Mills, Shangling Jui, Di Niu 
