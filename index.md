@@ -5,7 +5,7 @@ title: Home
 
 ## New Preprints
 
-**STExplainer: Global Explainability of GNNs via Frequent SubTree Mining**, Shengyao Lu, Yakun Yu, Baochun Li, Di Niu
+**STExplainer: Global Explainability of GNNs via Frequent SubTree Mining**, Shengyao Lu, Yakun Yu, Jiuding Yang, Baochun Li, Di Niu
 
 [Under review]()
 
