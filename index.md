@@ -23,6 +23,8 @@ In this paper, we study the nature of convincing and human-intelligible explanat
 
 ## Publications
 
+<img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/goat_overview.png?raw=true">
+
 **GOAt: Explaining Graph Neural Networks via Graph Output Attribution**, Shengyao Lu, Keith G. Mills, Jiao He, Bang Liu, Di Niu
 
 [ICLR 2024](https://openreview.net/forum?id=2Q8TZWAHv4) [[Code (Available soon)]()]
