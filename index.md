@@ -27,7 +27,7 @@ In this paper, we study the nature of convincing and human-intelligible explanat
 
 **GOAt: Explaining Graph Neural Networks via Graph Output Attribution**, Shengyao Lu, Keith G. Mills, Jiao He, Bang Liu, Di Niu
 
-[ICLR 2024](https://openreview.net/forum?id=2Q8TZWAHv4) [[Code (Available soon)]()]
+[ICLR 2024](https://openreview.net/forum?id=2Q8TZWAHv4) [[Code](https://github.com/sluxsr/GOAt)]
 
 This paper introduces Graph Output Attribution (GOAt), a novel method to attribute graph outputs to input graph features, creating GNN explanations that are faithful, discriminative, as well as stable across similar samples. By expanding the GNN as a sum of scalar products involving node features, edge features and activation patterns, we propose an efficient analytical method to compute contribution of each node or edge feature to each scalar product and aggregate the contributions from all scalar products in the expansion form to derive the importance of each node and edge. 
 
