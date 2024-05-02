@@ -15,7 +15,7 @@ In this paper, we reveal that inducing subgraph explanations by edges is more co
 
 - - -
 
-Keith G Mills, Fred X. Han, Mohammad Salameh, **Shengyao Lu**, CHUNHUA ZHOU, Jiao He, Fengyu Sun, Di Niu, *Building Optimal Neural Architectures using Interpretable Knowledge*
+Keith G Mills, Fred X. Han, Mohammad Salameh, **Shengyao Lu**, Chunhua Zhou, Jiao He, Fengyu Sun, Di Niu, *Building Optimal Neural Architectures using Interpretable Knowledge*
 
 [CVPR 2024](https://openreview.net/forum?id=ZPCqYkEyLW) [[Paper](https://arxiv.org/abs/2403.13293)]
 
