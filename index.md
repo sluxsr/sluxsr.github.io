@@ -5,6 +5,12 @@ title: Home
 
 ## Publications
 
+*EiG-Search: Generating Edge-Induced Subgraphs for GNN Explanation in Linear Time*, **Shengyao Lu**, Bang Liu, Keith G Mills, Jiao He, Di Niu
+
+[ICML 2024]()
+
+In this paper, we reveal that inducing subgraph explanations by edges is more comprehensive than other subgraph inducing techniques. We also emphasize the need of determining the subgraph explanation size for each data instance, as different data instances may involve different important substructures. Building upon these considerations, we introduce a training-free approach, named EiG-Search. We employ an efficient linear-time search algorithm over the edge-induced subgraphs, where the edges are ranked by an enhanced gradient-based importance. We conduct extensive experiments on a total of seven datasets, demonstrating its superior performance and efficiency both quantitatively and qualitatively over the leading baselines.
+
 *Building Optimal Neural Architectures using Interpretable Knowledge*, Keith G Mills, Fred X. Han, Mohammad Salameh, **Shengyao Lu**, CHUNHUA ZHOU, Jiao He, Fengyu Sun, Di Niu
 
 [CVPR 2024]() [[Paper](https://arxiv.org/abs/2403.13293)]
@@ -41,11 +47,3 @@ We propose R5, a relational reasoning framework based on reinforcement learning 
 [Under review]()
 
 In this paper, we follow the intrinsic message-passing mechanism of typical GNNs and introduce a novel method for extracting global GNN explanations with rooted subtrees. Our approach not only facilitates quantitative assessment of the relative importance of significant subtree patterns but also enables rapid evaluations through straightforward lookups to determine the applicability of learned global concepts to new instances. Moreover, we offer an extension to extract subgraph global explanations by clustering the learned subtree patterns, providing a more comprehensive perspective on GNN behaviors.
-
-- - - 
-
-*LEGrad: An Efficient Gradient Approach to Graph Neural Network Explanation*, **Shengyao Lu**, Bang Liu, Keith G Mills, Jiao He, Di Niu
-
-[Under review]()
-
-In this paper, we study the nature of convincing and human-intelligible explanations for GNNs, and propose an efficient method that produces subgraph-level explanations via edge importance approximation without additional explainer training, achieving counterfactual property and completeness objective at the same time. Extensive experiments on various public datasets demonstrate that our approach substantially outperforms a wide variety of existing methods in explanation fidelity, efficiency and stability.
