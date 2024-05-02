@@ -7,7 +7,7 @@ title: Home
 
 <img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/eig_figure1.png?raw=true">
 
-**Shengyao Lu**, Bang Liu, Keith G Mills, Jiao He, Di Niu, *EiG-Search: Generating Edge-Induced Subgraphs for GNN Explanation in Linear Time*
+**Shengyao Lu**, Bang Liu, Keith G Mills, Jiao He, Di Niu, <span style="color:black">*EiG-Search: Generating Edge-Induced Subgraphs for GNN Explanation in Linear Time*</span>
 
 [ICML 2024](https://openreview.net/forum?id=HO0g6cHVZx) [[Code](https://github.com/sluxsr/EiG-Search)]
 
