@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-## Publications
+# Publications
 
 <img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/eig_figure1.png?raw=true">
 
@@ -44,7 +44,7 @@ We propose R5, a relational reasoning framework based on reinforcement learning 
 
 <br> 
 
-## New Preprints
+# New Preprints
 
 **Shengyao Lu**, Yakun Yu, Jiuding Yang, Baochun Li, Di Niu, *STExplainer: Global Explainability of GNNs via Frequent SubTree Mining*
 
