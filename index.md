@@ -46,7 +46,7 @@ We propose R5, a relational reasoning framework based on reinforcement learning 
 
 ## New Preprints
 
-**Shengyao Lu**, Yakun Yu, Jiuding Yang, Baochun Li, Di Niu, *STExplainer: Global Explainability of GNNs via Frequent SubTree Mining*
+**Shengyao Lu**, Jiuding Yang, Baochun Li, Di Niu, *STExplainer: Global Explainability of GNNs via Frequent SubTree Mining*
 
 [Under review]()
 
