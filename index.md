@@ -27,7 +27,7 @@ We propose AutoBuild, a scheme which learns to align the latent embeddings of op
 
 **Shengyao Lu**, Keith G. Mills, Jiao He, Bang Liu, Di Niu, *GOAt: Explaining Graph Neural Networks via Graph Output Attribution*
 
-[ICLR 2024](https://openreview.net/forum?id=2Q8TZWAHv4) [[Paper](https://arxiv.org/pdf/2401.14578)] [[Code](https://github.com/sluxsr/GOAt)]
+[ICLR 2024](https://openreview.net/forum?id=2Q8TZWAHv4) [[Paper](https://arxiv.org/pdf/2401.14578)] [[Code](https://github.com/sluxsr/GOAt)] [[Video](https://iclr.cc/virtual/2024/poster/19551)]
 
 We introduce Graph Output Attribution (GOAt), a novel method to attribute graph outputs to input graph features, creating GNN explanations that are faithful, discriminative, as well as stable across similar samples. By expanding the GNN as a sum of scalar products involving node features, edge features and activation patterns, we propose an efficient analytical method to compute contribution of each node or edge feature to each scalar product and aggregate the contributions from all scalar products in the expansion form to derive the importance of each node and edge. 
 
@@ -37,7 +37,7 @@ We introduce Graph Output Attribution (GOAt), a novel method to attribute graph 
 
 **Shengyao Lu**\*, Bang Liu\*, Keith G. Mills, Shangling Jui, Di Niu, *R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning*
 
-[ICLR 2022 (Spotlight)](https://openreview.net/forum?id=2eXhNpHeW6E) [[Paper](https://arxiv.org/pdf/2205.06454)] [[Code](https://github.com/sluxsr/r5_graph_reasoning)]
+[ICLR 2022 (Spotlight)](https://openreview.net/forum?id=2eXhNpHeW6E) [[Paper](https://arxiv.org/pdf/2205.06454)] [[Code](https://github.com/sluxsr/r5_graph_reasoning)] [[Video](https://iclr.cc/virtual/2022/spotlight/7054)]
 
 We propose R5, a relational reasoning framework based on reinforcement learning that reasons over relational graph data and explicitly mines underlying compositional logical rules from observations. R5 has strong systematicity and being robust to noisy data. It consists of a policy value network equipped with Monte Carlo Tree Search to perform recurrent relational prediction and a backtrack rewriting mechanism for rule mining. By alternately applying the two components, R5 progressively learns a set of explicit rules from data and performs explainable and generalizable relation prediction. 
 
