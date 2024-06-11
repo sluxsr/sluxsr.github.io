@@ -7,7 +7,7 @@ title: Home
 
 <img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/eig_figure1.png?raw=true">
 
-**Shengyao Lu**, Bang Liu, Keith G Mills, Jiao He, Di Niu, *EiG-Search: Generating Edge-Induced Subgraphs for GNN Explanation in Linear Time*
+**Shengyao Lu**, Bang Liu, Keith G Mills, Jiao He, Di Niu. <span style="color:black">*EiG-Search: Generating Edge-Induced Subgraphs for GNN Explanation in Linear Time*</span>.
 
 [ICML 2024](https://openreview.net/forum?id=HO0g6cHVZx) [[Paper](https://arxiv.org/pdf/2405.01762)] [[Code](https://github.com/sluxsr/EiG-Search)]
 
@@ -15,7 +15,7 @@ In this paper, we reveal that inducing subgraph explanations by edges is more co
 
 - - -
 
-Keith G Mills, Fred X. Han, Mohammad Salameh, **Shengyao Lu**, Chunhua Zhou, Jiao He, Fengyu Sun, Di Niu, *Building Optimal Neural Architectures using Interpretable Knowledge*
+Keith G Mills, Fred X. Han, Mohammad Salameh, **Shengyao Lu**, Chunhua Zhou, Jiao He, Fengyu Sun, Di Niu. *Building Optimal Neural Architectures using Interpretable Knowledge*.
 
 [CVPR 2024](https://openreview.net/forum?id=ZPCqYkEyLW) [[Paper](https://arxiv.org/pdf/2403.13293)]
 
@@ -25,7 +25,7 @@ We propose AutoBuild, a scheme which learns to align the latent embeddings of op
 
 <img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/goat_overview.png?raw=true">
 
-**Shengyao Lu**, Keith G. Mills, Jiao He, Bang Liu, Di Niu, *GOAt: Explaining Graph Neural Networks via Graph Output Attribution*
+**Shengyao Lu**, Keith G. Mills, Jiao He, Bang Liu, Di Niu. *GOAt: Explaining Graph Neural Networks via Graph Output Attribution*.
 
 [ICLR 2024](https://openreview.net/forum?id=2Q8TZWAHv4) [[Paper](https://arxiv.org/pdf/2401.14578)] [[Code](https://github.com/sluxsr/GOAt)] [[Video](https://iclr.cc/virtual/2024/poster/19551)]
 
@@ -35,7 +35,7 @@ We introduce Graph Output Attribution (GOAt), a novel method to attribute graph 
 
 <img align="center" src="https://github.com/sluxsr/sluxsr.github.io/blob/master/pics/r5_overview.png?raw=true">
 
-**Shengyao Lu**\*, Bang Liu\*, Keith G. Mills, Shangling Jui, Di Niu, *R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning*
+**Shengyao Lu**\*, Bang Liu\*, Keith G. Mills, Shangling Jui, Di Niu. *R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning*.
 
 [ICLR 2022 (Spotlight)](https://openreview.net/forum?id=2eXhNpHeW6E) [[Paper](https://arxiv.org/pdf/2205.06454)] [[Code](https://github.com/sluxsr/r5_graph_reasoning)] [[Video](https://iclr.cc/virtual/2022/spotlight/7054)]
 
@@ -46,7 +46,7 @@ We propose R5, a relational reasoning framework based on reinforcement learning 
 
 ## New Preprints
 
-**Shengyao Lu**, Jiuding Yang, Baochun Li, Di Niu, *STExplainer: Global Explainability of GNNs via Frequent SubTree Mining*
+**Shengyao Lu**, Jiuding Yang, Baochun Li, Di Niu. *STExplainer: Global Explainability of GNNs via Frequent SubTree Mining*.
 
 [Under review]()
 
