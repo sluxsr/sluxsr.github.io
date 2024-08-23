@@ -3,10 +3,8 @@ layout: default
 title: Blog
 ---
 
-## Blog   <button name="back" onclick="./index.html" style="font-weight:bold;">BACK</button>
+## Blog   <button name="back" onclick="../index.html" style="font-weight:bold;">BACK</button>
 - - - 
-
-<button name="back" onclick="./">BACK</button>
 
 #### [back](./)
 
