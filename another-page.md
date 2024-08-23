@@ -3,7 +3,9 @@ layout: default
 title: Blog
 ---
 
-## Welcome to another page
+## Blog
+
+[back](./)
 
 _yay_
 
