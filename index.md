@@ -7,7 +7,7 @@ title: Home
 
 Jiuding Yang, **Shengyao Lu**, Weidong Guo, Xiangyang Li, Kaitong Yang, Yu Xu, Di Niu. <span style="color:black">*TaCIE: Enhancing Instruction Comprehension in Large Language Models through Task-Centred Instruction Evolution*</span>.
 
-[COLING 2025]（https://coling2025.org/program/main_conference_papers/） [[Paper]](https://arxiv.org/abs/2410.02795)
+[COLING 2025]https://coling2025.org/program/main_conference_papers/） [[Paper]](https://arxiv.org/abs/2410.02795)
 
 Our innovative approach, Task-Centered Instruction Evolution (TaCIE), addresses these shortcomings by redefining instruction evolution from merely evolving seed instructions to a more dynamic and comprehensive combination of elements. TaCIE starts by deconstructing complex instructions into their fundamental components. It then generates and integrates new elements with the original ones, reassembling them into more sophisticated instructions that progressively increase in difficulty, diversity, and complexity. Applied across multiple domains, LLMs fine-tuned with these evolved instructions have substantially outperformed those tuned with conventional methods, marking a significant advancement in instruction-based model fine-tuning. 
 
