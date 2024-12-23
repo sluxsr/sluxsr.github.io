@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-## Publications
+## Selected Publications
 
 Jiuding Yang, **Shengyao Lu**, Weidong Guo, Xiangyang Li, Kaitong Yang, Yu Xu, Di Niu. <span style="color:black">*TaCIE: Enhancing Instruction Comprehension in Large Language Models through Task-Centred Instruction Evolution*</span>.
 
