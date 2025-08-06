@@ -59,3 +59,6 @@ We propose R5, a relational reasoning framework based on reinforcement learning 
 [Under review]()
 
 In this paper, we follow the intrinsic message-passing mechanism of typical GNNs and introduce a novel method for extracting global GNN explanations with rooted subtrees. Our approach not only facilitates quantitative assessment of the relative importance of significant subtree patterns but also enables rapid evaluations through straightforward lookups to determine the applicability of learned global concepts to new instances. Moreover, we offer an extension to extract subgraph global explanations by clustering the learned subtree patterns, providing a more comprehensive perspective on GNN behaviors.
+
+## Academic services 
+Reviewer of AAAI'26, NeurIPS'25, ICCV'25, ICML'25, CVPR'25, AISTATS'25, ICLR'25, AAAI'25, NeurIPS'24, CVPR'24, KDD'24. Journal: Neural Networks
