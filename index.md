@@ -5,7 +5,7 @@ title: Home
 
 ## Introduction 
 
-**Shengyao Lu** (陆晟瑶) is an incoming Assistant Professor in the department of [Computer Science](https://www.uvic.ca/ecs/computerscience/index.php) (CS) at the [University of Victoria](https://www.uvic.ca) (UVic). She received her BSc. and Ph.D. degree at the [University of Alberta](https://www.ualberta.ca/en/index.html). Her research interests primarily lie in the areas of Explainbale AI (XAI), Graph Neural Networks (GNNs), theory and techniques for AGI (e.g., understanding and improving large language models via graphs, XAI and reinforcement learning (RL)).
+**Shengyao Lu** (陆晟瑶) is an incoming Assistant Professor in the [Department of Computer Science](https://www.uvic.ca/ecs/computerscience/index.php) (CS) at the [University of Victoria](https://www.uvic.ca) (UVic). She received her BSc. and Ph.D. degree at the [University of Alberta](https://www.ualberta.ca/en/index.html). Her research interests primarily lie in the areas of Explainbale AI (XAI), Graph Neural Networks (GNNs), theory and techniques for AGI (e.g., understanding and improving large language models via graphs, XAI and reinforcement learning (RL)).
 
 <span style="color:#2858B5; font-weight: bold;">Openings:</span> I am looking for highly-motivated students starting Spring/Fall 2026. Please send me your CV if interested.
 
