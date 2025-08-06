@@ -7,6 +7,7 @@ title: Home
 
 <span style="color:blue">**Openings:**</span> I am looking for highly-motivated students starting Spring/Fall 2026. Please send me your CV if interested.
 
+- - -
 
 ## Selected Publications
 
