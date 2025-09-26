@@ -70,4 +70,4 @@ In this paper, we follow the intrinsic message-passing mechanism of typical GNNs
 <br>
 
 ## Academic services 
-Reviewer of AAAI'26, NeurIPS'25, ICCV'25, ICML'25, CVPR'25, AISTATS'25, ICLR'25, AAAI'25, NeurIPS'24, CVPR'24, KDD'24. Journal: Neural Networks
+Reviewer of ICLR'26, AISTATS'26, AAAI'26, NeurIPS'25, ICCV'25, ICML'25, CVPR'25, AISTATS'25, ICLR'25, AAAI'25, NeurIPS'24, CVPR'24, KDD'24. Journal: Neural Networks
