@@ -23,7 +23,7 @@ I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM de
 
 .news-list {
   margin: 0;
-  padding: 0;  
+  padding: 0; 
 }
 
 .news-item {
