@@ -5,11 +5,10 @@
     id="topbar"
     class="d-flex align-items-center justify-content-between px-lg-3 h-100"
   >
-    <nav id="breadcrumb" aria-label="Breadcrumb">
+    <!-- <nav id="breadcrumb" aria-label="Breadcrumb">
       {% assign paths = page.url | split: '/' %}
 
       {% if paths.size == 0 or page.layout == 'home' %}
-        <!-- index page -->
         <span>{{ site.data.locales[include.lang].tabs.home | capitalize }}</span>
 
       {% else %}
@@ -37,8 +36,7 @@
           {% endif %}
         {% endfor %}
       {% endif %}
-    </nav>
-    <!-- endof #breadcrumb -->
+    </nav> -->
 
     <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Sidebar">
       <i class="fas fa-bars fa-fw"></i>
@@ -55,7 +53,7 @@
       {% endif %}
     </div>
 
-    <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search">
+    <!-- <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search">
       <i class="fas fa-search fa-fw"></i>
     </button>
 
@@ -72,6 +70,6 @@
     </search>
     <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">
       {{- site.data.locales[include.lang].search.cancel -}}
-    </button>
+    </button> -->
   </div>
 </header>
