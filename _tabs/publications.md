@@ -23,6 +23,6 @@ For the most up-to-date publication list, please visit my [Google Scholar profil
 
 [2] Ruichen Chen, **Shengyao Lu**, Mohamed A. Elgammal, Peter Chun, Vaughn Betz, Di Niu. **VPR-Gym: A Platform for Exploring AI Techniques in FPGA Placement Optimization**, in *The 33rd International Conference on Field-Programmable Logic and Applications (FPL 2023)*.
 
-[1] **Shengyao Lu**, Bang Liu$^*$, Keith G. Mills, Shangling Jui, Di Niu. **R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning**, in *The Tenth International Conference on Learning Representations (ICLR 2022)*, **Spotlight**. [[Download](https://arxiv.org/pdf/2205.06454)]
+[1] **Shengyao Lu**$^\*$, Bang Liu$^\*$, Keith G. Mills, Shangling Jui, Di Niu. **R5: Rule Discovery with Reinforced and Recurrent Relational Reasoning**, in *The Tenth International Conference on Learning Representations (ICLR 2022)*, **Spotlight**. [[Download](https://arxiv.org/pdf/2205.06454)]
 
 
