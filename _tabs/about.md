@@ -69,7 +69,7 @@ I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM de
     <div class="news-item">
       <span class="news-date">10/2025</span>
       <span class="news-text">
-        My PhD thesis was selected for the George Walker Award for Best Doctoral Thesis. 🥇
+        My PhD thesis received the George Walker Award for Best Doctoral Thesis. 🥇
       </span>
     </div>
     <div class="news-item">
