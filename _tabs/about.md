@@ -69,6 +69,12 @@ I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM de
     <div class="news-item">
       <span class="news-date">09/2025</span>
       <span class="news-text">
+        My PhD thesis was selected for the George Walker Award for Best Doctoral Thesis. 🥇
+      </span>
+    </div>
+    <div class="news-item">
+      <span class="news-date">09/2025</span>
+      <span class="news-text">
         I started my appointment at UVic as a TTAP. 🔥
       </span>
     </div>
