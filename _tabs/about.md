@@ -54,6 +54,8 @@ I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM de
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
+  margin-top: -0.3rem !important;
+  margin-bottom: 0rem !important;
 }
 
 .news-page-btn {
@@ -124,9 +126,7 @@ I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM de
     <button id="news-prev" class="news-page-btn">
       <i class="fas fa-chevron-left"></i>
     </button>
-
     <span id="news-page-info" class="news-page-info"></span>
-
     <button id="news-next" class="news-page-btn">
       <i class="fas fa-chevron-right"></i>
     </button>
