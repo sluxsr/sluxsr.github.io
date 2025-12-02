@@ -48,6 +48,40 @@ I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM de
   font-size: 1rem;
   font-weight: 500;
 }
+
+.news-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.news-page-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.2s ease;
+}
+
+.news-page-btn:hover {
+  color: #000;
+}
+
+.news-page-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.news-page-btn i {
+  font-size: 0.9rem;
+}
+
+.news-page-info {
+  font-size: 0.85rem;
+  color: #666;
+}
 </style>
 
 <div class="news-section">
@@ -85,7 +119,76 @@ I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM de
       </span>
     </div>
   </div>
+  <!-- pagination controls -->
+  <div class="news-pagination mt-3">
+    <button id="news-prev" class="news-page-btn">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <span id="news-page-info" class="news-page-info"></span>
+
+    <button id="news-next" class="news-page-btn">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
 </div>
+
+{% raw %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const section = document.querySelector('.news-section');
+  if (!section) return;
+
+  const items = Array.from(section.querySelectorAll('.news-item'));
+  const pageSize = 6; 
+  let currentPage = 1;
+  const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
+
+  const prevBtn = document.getElementById('news-prev');
+  const nextBtn = document.getElementById('news-next');
+  const pageInfo = document.getElementById('news-page-info');
+
+  function renderPage() {
+    const start = (currentPage - 1) * pageSize;
+    const end = start + pageSize;
+
+    items.forEach(function (item, idx) {
+      if (idx >= start && idx < end) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    if (pageInfo) {
+      pageInfo.textContent = 'Page ' + currentPage + ' / ' + totalPages;
+    }
+    if (prevBtn) prevBtn.disabled = (currentPage === 1);
+    if (nextBtn) nextBtn.disabled = (currentPage === totalPages);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function () {
+      if (currentPage > 1) {
+        currentPage -= 1;
+        renderPage();
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      if (currentPage < totalPages) {
+        currentPage += 1;
+        renderPage();
+      }
+    });
+  }
+
+  renderPage();
+});
+</script>
+{% endraw %}
 
 <div class="row g-3 my-3">
   <div class="col-md-6">
