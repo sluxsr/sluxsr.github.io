@@ -86,3 +86,12 @@ I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM de
     </div>
   </div>
 </div>
+
+<div class="row g-3 my-3">
+  <div class="col-md-6">
+    <img src="/commons/pics/UAconvocation.JPG" class="img-fluid rounded" alt="convocation">
+  </div>
+  <div class="col-md-6">
+    <!-- <img src="/assets/img/fig2.png" class="img-fluid rounded" alt="Figure 2"> -->
+  </div>
+</div>
