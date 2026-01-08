@@ -7,7 +7,7 @@ order: 1
 **Shengyao Lu** (陆晟瑶) is an Assistant Professor in the [Department of Computer Science](https://www.uvic.ca/ecs/computerscience/index.php) (CS) at the [University of Victoria](https://www.uvic.ca) (UVic). She received her BSc. and Ph.D. degree at the [University of Alberta](https://www.ualberta.ca/en/index.html). Her research interests primarily lie in the areas of Explainable AI (XAI), graph neural networks (GNNs) and graph representation learning, reinforcement learning (RL) for reasoning, large language models (LLMs) toward artificial general intelligence (AGI).
 
 <span style="font-size: 1.8rem; font-weight: 550;">Openings</span>  
-I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM deployment/fine-tuning, visual-language alignment, graph-language alignment would be a strong asset. Please send me your CV if interested.
+I have multiple openings for MSc/PhD starting in Fall 2026. Background in LLM deployment/fine-tuning, visual-language alignment, graph-language alignment would be a strong asset. Please **email me** your CV if interested. 
 
 <style>
 .news-section {
