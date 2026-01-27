@@ -80,7 +80,11 @@ order: 2
       <span class="teaching-dot"></span>
     </div>
     <div class="teaching-course">
-      <strong>CSC 421 – Introduction to Artificial Intelligence</strong>
+      <strong>
+      <a href="https://github.com/sluxsr/csc421_slu" target="_blank" rel="noopener">
+        CSC 421 – Introduction to Artificial Intelligence
+      </a>
+    </strong>
     </div>
   </div>
 
