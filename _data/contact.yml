@@ -16,7 +16,7 @@
 
 - type: googlescholar
   icon: "fas fa-graduation-cap"
-  url: "https://scholar.google.com/citations?user=MSsab9EAAAAJ"
+  url: "https://scholar.google.com/citations?user=MSsab9EAAAAJ&hl"
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
