@@ -11,7 +11,7 @@ order: 3
 
 .service-year {
   display: grid;
-  grid-template-columns: 80px auto; /* 左：年 右：内容 */
+  grid-template-columns: 80px auto; 
   column-gap: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -51,8 +51,10 @@ order: 3
       <h4>Conference Reviewer</h4>
       <ul>
         <div>The 14th International Conference on Learning Representations (ICLR '26)</div>
+        <div><b>(Reviewer Award)</b>Forty-Third International Conference on Machine Learning (ICML' 26)</div>
         <div>Twenty-Ninth Annual Conference on Artificial Intelligence and Statistics (AISTATS '26)</div>
         <div>The IEEE/CVF Conference on Computer Vision and Pattern Recognition 2026 (CVPR '26)</div>
+        <div>The 19th European Conference on Computer Vision (ECCV '26)</div>
       </ul>
     </div>
   </div>
